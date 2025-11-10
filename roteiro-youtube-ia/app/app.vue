@@ -4,7 +4,7 @@
     <Sidebar />
 
     <!-- Main Content -->
-    <main class="flex-1 overflow-auto">
+    <main class="flex-1 min-h-screen">
       <div class="max-w-5xl mx-auto px-6 py-8">
         <!-- Page Header -->
         <div class="mb-8">
