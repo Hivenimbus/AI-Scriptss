@@ -111,39 +111,26 @@
 
           <!-- Duração -->
           <div>
-            <label for="duracao-tema" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
-              Duração do Vídeo
+            <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-3">
+              Duração do Vídeo (minutos)
             </label>
-            <select
-              id="duracao-tema"
-              v-model="duracao"
-              class="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-600 focus:border-transparent dark:bg-gray-700 dark:text-white transition"
-              :disabled="isLoading"
-            >
-              <option value="3-5min">3-5 minutos</option>
-              <option value="5-10min">5-10 minutos</option>
-              <option value="10-15min">10-15 minutos</option>
-              <option value="15-20min">15-20 minutos</option>
-              <option value="20+min">20+ minutos</option>
-            </select>
-          </div>
-
-          <!-- Tom -->
-          <div>
-            <label for="tom-tema" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
-              Tom do Vídeo
-            </label>
-            <select
-              id="tom-tema"
-              v-model="tom"
-              class="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-600 focus:border-transparent dark:bg-gray-700 dark:text-white transition"
-              :disabled="isLoading"
-            >
-              <option value="informal">Informal</option>
-              <option value="formal">Formal</option>
-              <option value="educativo">Educativo</option>
-              <option value="entretenimento">Entretenimento</option>
-            </select>
+            <div class="grid grid-cols-4 gap-2">
+              <button
+                v-for="tempo in [1, 5, 10, 20]"
+                :key="tempo"
+                type="button"
+                @click="duracao = `${tempo}-${tempo}min`"
+                :class="[
+                  'px-4 py-2 rounded-lg font-semibold transition border-2',
+                  duracao === `${tempo}-${tempo}min`
+                    ? 'border-blue-600 bg-blue-50 dark:bg-blue-900/20 text-blue-600'
+                    : 'border-gray-300 dark:border-gray-600 text-gray-700 dark:text-gray-300 hover:border-blue-600'
+                ]"
+                :disabled="isLoading"
+              >
+                {{ tempo }}m
+              </button>
+            </div>
           </div>
         </div>
 
@@ -183,8 +170,7 @@
 const mostrarTemas = ref(false)
 const temaSelecionado = ref<string | null>(null)
 const descricaoAdicional = ref('')
-const duracao = ref<'3-5min' | '5-10min' | '10-15min' | '15-20min' | '20+min'>('5-10min')
-const tom = ref<'informal' | 'formal' | 'educativo' | 'entretenimento'>('informal')
+const duracao = ref<'1-1min' | '5-5min' | '10-10min' | '20-20min'>('5-5min')
 const isLoading = ref(false)
 const erro = ref<string | null>(null)
 const roteiroGerado = ref(false)
@@ -240,7 +226,6 @@ const handleGeracaoPorTema = async () => {
       : temaSelecionado.value
 
     const resultado = await gerar(temaCompleto, {
-      tom: tom.value,
       duracao: duracao.value
     })
 

@@ -1,5 +1,9 @@
 <template>
-  <div>
+  <div class="bg-white dark:bg-gray-800 rounded-lg shadow-lg p-6">
+    <h2 class="text-2xl font-bold mb-6 text-gray-800 dark:text-white">
+      Gerar Novo Roteiro
+    </h2>
+
     <form @submit.prevent="handleSubmit" class="space-y-4">
       <div>
         <label for="tema" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
@@ -27,6 +31,30 @@
           class="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-youtube-red focus:border-transparent dark:bg-gray-700 dark:text-white transition resize-none"
           :disabled="isLoading"
         />
+      </div>
+
+      <!-- Seleção de Tempo -->
+      <div>
+        <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-3">
+          Duração do Vídeo (minutos)
+        </label>
+        <div class="grid grid-cols-4 gap-2">
+          <button
+            v-for="tempo in [1, 5, 10, 20]"
+            :key="tempo"
+            type="button"
+            @click="tempoSelecionado = tempo"
+            :class="[
+              'px-4 py-2 rounded-lg font-semibold transition border-2',
+              tempoSelecionado === tempo
+                ? 'border-youtube-red bg-red-50 dark:bg-red-900/20 text-youtube-red'
+                : 'border-gray-300 dark:border-gray-600 text-gray-700 dark:text-gray-300 hover:border-youtube-red'
+            ]"
+            :disabled="isLoading"
+          >
+            {{ tempo }}m
+          </button>
+        </div>
       </div>
 
       <button
@@ -72,6 +100,7 @@
 <script setup lang="ts">
 const tema = ref('')
 const descricao = ref('')
+const tempoSelecionado = ref(5)
 const roteiroGerado = ref(false)
 
 const { gerar, isLoading, erro } = useGerarRoteiro()
