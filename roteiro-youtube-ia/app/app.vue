@@ -18,11 +18,8 @@
 
         <!-- Formulário e Configurações -->
         <div class="space-y-6">
-          <!-- Formulário de Geração -->
-          <FormularioRoteiro />
-
-          <!-- Configurações Avançadas -->
-          <ConfiguracoesAvancadas />
+          <!-- Geradores de Roteiro com 3 Modos -->
+          <GeradoresRoteiro />
 
           <!-- Roteiros Gerados Recentemente -->
           <div v-if="roteirosRecentes.length > 0" class="mt-8">

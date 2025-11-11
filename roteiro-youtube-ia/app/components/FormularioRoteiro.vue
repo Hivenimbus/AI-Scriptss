@@ -1,9 +1,5 @@
 <template>
-  <div class="bg-white dark:bg-gray-800 rounded-lg shadow-lg p-6">
-    <h2 class="text-2xl font-bold mb-6 text-gray-800 dark:text-white">
-      Gerar Novo Roteiro
-    </h2>
-
+  <div>
     <form @submit.prevent="handleSubmit" class="space-y-4">
       <div>
         <label for="tema" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
