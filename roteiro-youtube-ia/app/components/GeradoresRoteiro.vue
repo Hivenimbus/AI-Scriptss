@@ -26,14 +26,13 @@
         :class="[
           'flex-1 px-6 py-4 font-semibold transition-colors border-b-2 focus:outline-none',
           modoAtual === 'temas'
-            ? 'text-youtube-red border-youtube-red bg-red-50 dark:bg-red-900/20'
+            ? 'text-blue-600 border-blue-600 bg-blue-50 dark:bg-blue-900/20'
             : 'text-gray-600 dark:text-gray-400 border-transparent hover:text-gray-800 dark:hover:text-gray-300'
         ]"
       >
         <div class="flex items-center justify-center gap-2">
           <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
-            <path d="M7 2a1 1 0 011 1v1h4V3a1 1 0 011-1h2a1 1 0 011 1v1h4a2 2 0 012 2v2H3V5a2 2 0 012-2h2V3a1 1 0 001-1z" />
-            <path fill-rule="evenodd" d="M3 8h14v7a2 2 0 01-2 2H5a2 2 0 01-2-2V8zm0 0V5h14v3H3z" />
+            <path d="M5 4a2 2 0 012-2h6a2 2 0 012 2v14l-5-2.5L5 18V4z" />
           </svg>
           <span>Seleção de Temas</span>
         </div>
